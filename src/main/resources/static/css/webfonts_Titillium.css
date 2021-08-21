@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+
+@font-face {
+	 font-family: 'Titillium Web';
+	font-style: normal;
+	font-weight: 400;
+	src: url('https://www.kinac.re.kr/resources/fonts/Titillium/TitilliumWeb-Regular.eot');
+	src: url('https://www.kinac.re.kr/resources/fonts/Titillium/TitilliumWeb-Regular.woff2') format('woff2'), 
+	     url('https://www.kinac.re.kr/resources/fonts/Titillium/TitilliumWeb-Regular.woff') format('woff'),
+		 url('https://www.kinac.re.kr/resources/fonts/Titillium/TitilliumWeb-Regular.svg#TitilliumWeb') format('svg'); 
+	}
+@font-face {
+	 font-family: 'Titillium Web';
+	font-style: normal;
+	font-weight: 600;
+	src: url('https://www.kinac.re.kr/resources/fonts/Titillium/TitilliumWeb-SemiBold.eot');
+	src: url('https://www.kinac.re.kr/resources/fonts/Titillium/TitilliumWeb-SemiBold.woff2') format('woff2'), 
+	     url('https://www.kinac.re.kr/resources/fonts/Titillium/TitilliumWeb-SemiBold.woff') format('woff'),
+		 url('https://www.kinac.re.kr/resources/fonts/Titillium/TitilliumWeb-SemiBold.svg#TitilliumWeb') format('svg'); 
+}

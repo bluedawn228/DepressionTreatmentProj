@@ -1,0 +1,49 @@
+@charset "utf-8";
+/* Web Standardization Team, Author:JongWoon,LEE 2017.08.30 */
+
+/*
+ * Noto Sans CJK KR(Korean) http://www.google.com/fonts/earlyaccess
+ * @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+ */
+@font-face {
+	font-family: 'Noto Sans KR';
+	font-style: normal;
+	font-weight: 100;
+	src: url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Thin.eot);
+	src: local('Noto Sans CJK KR Thin'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Thin.eot?#iefix) format('embedded-opentype'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Thin.woff2) format('woff2'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Thin.woff) format('woff'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Thin.otf) format('opentype'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Thin.ttf) format('truetype'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Thin.svg#NotoSansKR-Thin) format('svg');
+}
+@font-face {
+	font-family: 'Noto Sans KR';
+	font-style: normal;
+	font-weight: 300;
+	src: url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Light.eot);
+	src: local('Noto Sans CJK KR Light'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Light.eot?#iefix) format('embedded-opentype'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Light.woff2) format('woff2'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Light.woff) format('woff'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Light.otf) format('opentype'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Light.ttf) format('truetype'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Light.svg#NotoSansKR-Light) format('svg');
+}
+@font-face {
+	font-family: 'Noto Sans KR';
+	font-style: normal;
+	font-weight: 400;
+	src: url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Regular.eot);
+	src: local('Noto Sans CJK KR Regular'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Regular.eot?#iefix) format('embedded-opentype'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Regular.woff2) format('woff2'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Regular.woff) format('woff'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Regular.otf) format('opentype'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Regular.ttf) format('truetype'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Regular.svg#NotoSansKR-Regular) format('svg');
+}
+@font-face {
+	font-family: 'Noto Sans KR';
+	font-style: normal;
+	font-weight: 500;
+	src: url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Medium.eot);
+	src: local('Noto Sans CJK KR Medium'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Medium.eot?#iefix) format('embedded-opentype'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Medium.woff2) format('woff2'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Medium.woff) format('woff'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Medium.otf) format('opentype'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Medium.ttf) format('truetype'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Medium.svg#NotoSansKR-Medium) format('svg');
+}
+@font-face {
+	font-family: 'Noto Sans KR';
+	font-style: normal;
+	font-weight: 700;
+	src: url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Bold.eot);
+	src: local('Noto Sans CJK KR Bold'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Bold.eot?#iefix) format('embedded-opentype'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Bold.woff2) format('woff2'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Bold.woff) format('woff'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Bold.otf) format('opentype'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Bold.ttf) format('truetype'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Bold.svg#NotoSansKR-Bold) format('svg');
+}
+@font-face {
+	font-family: 'Noto Sans KR';
+	font-style: normal;
+	font-weight: 900;
+	src: url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Black.eot);
+	src: local('Noto Sans CJK KR Black'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Black.eot?#iefix) format('embedded-opentype'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Black.woff2) format('woff2'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Black.woff) format('woff'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Black.otf) format('opentype'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Black.ttf) format('truetype'),url(https://www.kinac.re.kr/resources/fonts/NotoSansKR/NotoSansKR-Black.svg#NotoSansKR-Black) format('svg');
+}

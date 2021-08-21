@@ -1,0 +1,63 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'war'
+}
+
+group = 'com.mulcam'
+version = '0.0.15-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+//   : '패키지.패키지.메인클래스네임
+manifest {
+        attributes 'Main-Class': 'com.mulcam.project.FinalTeamProjectApplication'
+    }
+
+//plain war	배포
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+
+//jsp dependencies 설정
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+    implementation 'javax.servlet:jstl:1.2'
+//json dependencies 설정	
+	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+//multipart file 설정
+	implementation 'org.apache.commons:commons-lang3:3.12.0'
+	implementation 'commons-io:commons-io:2.11.0'
+//json 데이터 수신 Gson
+	implementation 'com.google.code.gson:gson:2.8.7'
+//json 데이터 바인드
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
+//json dependencies 설정	
+	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+	implementation 'org.json:json:20210307'	
+
+	
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
+	annotationProcessor 'org.projectlombok:lombok'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+}

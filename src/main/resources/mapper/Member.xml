@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mulcam.project.dao.MemberDAO">
+
+
+	<select id="selectMemberForLogin" parameterType="MemberVO" resultType="MemberVO" >
+		
+				<![CDATA[
+						SELECT
+								id,
+								name,
+								email
+						FROM
+								ctb_member
+						WHERE
+								id=#{id} and
+								password=#{password}		
+				]]>
+		
+		</select>
+		
+		<select id="selectMemberById" parameterType="String" resultType="MemberVO" >
+		
+				<![CDATA[
+						SELECT
+								id,
+								password
+						FROM
+								ctb_member
+						WHERE
+								id=#{id} 
+				]]>
+		
+		</select>
+		
+		<select id="searchUniqueId" parameterType="String" resultType="int" >
+		
+				<![CDATA[
+						SELECT
+								nvl(count(id),0)
+						FROM
+								ctb_member
+						WHERE
+								id=#{id} 
+				]]>
+		
+		</select>		
+		
+		
+		<insert id="insertMember" parameterType="MemberVO">
+		
+				<![CDATA[
+				
+						INSERT
+						INTO
+								ctb_member
+								(		id,
+										password,
+										name,
+										email,
+										signupdate
+								)
+						VALUES
+								(		#{id},
+										#{password},
+										#{name},
+										#{email},
+										sysdate+9/24		
+								)
+								
+				]]>
+
+		</insert>
+
+
+</mapper>

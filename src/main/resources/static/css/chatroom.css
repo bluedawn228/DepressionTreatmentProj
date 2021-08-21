@@ -1,0 +1,90 @@
+    .outer {
+  text-align: center;
+  width:100%;
+	}
+	
+	.inner {
+	  display: inline-block;
+	  width:40%;
+	}
+	ul {
+	list-style: none;
+    padding-left: 0px;
+    text-align:left;
+	}
+	
+.userImage{
+	width:60px;
+ 	height:60px;
+ 	border-radius:50%;
+
+}
+
+.chatWrapper{
+	display:block;
+	width:100%;
+}
+
+.divLeft1{
+	float:left;
+	width:10%;
+}
+
+.divLeft2{
+	float:left;
+	width:70%;
+}
+
+.divRight{
+	float:right;
+	width:20%;
+}
+
+.chatName{
+	font-size:0.6em;
+	font-weight:600;
+    text-overflow: ellipsis;
+	
+}
+
+.chatContent{
+	font-size:0.9em;
+	text-overflow: ellipsis;
+	
+}
+
+.chatTime{
+	font-size:0.5em;
+	font-weight:100;
+	width:20%;
+	float:right;
+	text-align:right;
+    text-overflow: ellipsis;
+	
+}
+
+.list-group{
+	list-style: none;
+    padding-left: 0px;
+    overflow-y:auto;
+    width: auto; 
+    height: 500px;
+}
+.list-group-item{
+	list-style: none;
+    padding-left: 0px;
+	
+}
+
+.username{
+	padding:10px;
+	width:400px;
+}
+.usertext{
+	padding:10px;
+	width:300px;
+}
+
+label {
+
+}

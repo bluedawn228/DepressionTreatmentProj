@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+    .tg {
+        border-collapse: collapse;
+        border-color: #ccc;
+        border-spacing: 0;
+        width: 100%;
+    }
+
+    .tg td {
+        background-color: #fff;
+        border-color: #ccc;
+        border-style: solid;
+        border-width: 1px;
+        color: #333;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        overflow: hidden;
+        padding: 10px 5px;
+        word-break: normal;
+    }
+
+    .tg th {
+        background-color: #f0f0f0;
+        border-color: #ccc;
+        border-style: solid;
+        border-width: 1px;
+        color: #333;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        overflow: hidden;
+        padding: 10px 5px;
+        word-break: normal;
+    }
+
+    .tg .tg-buh4 {
+        background-color: #f9f9f9;
+        text-align: left;
+        vertical-align: top
+    }
+
+    .tg .tg-0lax {
+        text-align: left;
+        vertical-align: top
+    }
+
+    .tg .tg-1pky {
+        text-align: center;
+        vertical-align: middle;
+        width:10%;
+    }
+    
+        .tg .tg-2pky {
+        text-align: center;
+        vertical-align: middle;
+        width:10%;
+    }
+    
+            .tg .tg-3pky {
+        text-align: center;
+        vertical-align: middle;
+        width:90%;
+    }
+    
+                .tg .tg-4pky {
+        text-align: center;
+        vertical-align: middle;
+        width:10%;
+    }
+    
+   	 .tg .tg-0mid {
+        text-align: center;
+        vertical-align: middle;
+    }
+    .tg .tg-0left {
+        text-align: center;
+        vertical-align: middle;
+    }
+    
+    .tg input {
+    	border:0px;
+    }
+    
+    .tg  .text-left{
+     text-align:left;
+    }
+
+.progress {
+  position: fixed;
+  bottom: 0;
+  /* width: 100% */
+  left: 0;
+  right: 0;
+
+  /* 생략 */
+}
+.emailModal {
+	position:fixed;
+	top: 50vh; 
+	left: 50vw; 
+	transform: translate(-50%, -50%);
+	padding:20px;
+  	display:none;
+  	border:1px solid #eee;
+
+}

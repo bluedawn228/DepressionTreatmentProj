@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mulcam.project.dao.POIBoardDAO">
+
+		<select id="boardCount" resultType="int">
+				<![CDATA[
+						SELECT
+							nvl(count(*),0)
+						FROM
+							ctb_poi_board
+				]]>
+		</select>
+		
+		<select id="boardCountFilter" resultType="int">
+		
+						SELECT
+							nvl(count(*),0)
+						FROM
+							cvw_poi_board
+						WHERE	
+						<if test="filterProvince != null" > 
+			        		province like  '%' || #{filterProvince} || '%'
+			        	</if>    
+			        	<if test="filterProvince != null and filterDivision != null  "> and </if>
+			        	<if test="filterDivision != null" > 
+			        		division = #{filterDivision}
+			        	</if>    
+			        	<if test=" (filterDivision != null and filterRate != null ) or ( filterProvince != null and filterDivision ==null and filterRate != null)"> and </if>
+			        	<if test="filterRate != null" > 
+			        		rate = #{filterRate}
+			        	</if>   
+		</select>
+
+
+		<select id="boardList" parameterType="int" resultType="POIBoardVO">
+				<![CDATA[
+						SELECT
+						        bno,
+							    subject,
+							    content,
+							    address,
+							    posx,
+							    posy,
+							    url,
+							    division,
+							    recommend,
+							    rate,
+							    writer,
+							    regdate
+						FROM
+								    (
+								        SELECT
+								            ROW_NUMBER()
+								            OVER(
+								                ORDER BY BNO DESC
+								            ) num,
+								            a.*
+								        FROM
+								            ctb_poi_board a
+								        ORDER BY
+								            division , rate, address
+								    ) 
+										
+						WHERE 
+							num between #{startrow} and #{startrow}+10    
+
+				]]>
+		</select>
+		
+		
+		
+		<select id="boardDetail" parameterType="int" resultType="POIBoardVO">
+				<![CDATA[
+						SELECT
+							    bno,
+							    subject,
+							    content,
+							    address,
+							    posx,
+							    posy,
+							    url,
+							    division,
+							    recommend,
+							    rate,
+							    writer,
+							    regdate
+						FROM
+							CTB_POI_BOARD
+						WHERE 
+							bno = #{bno}	
+						
+				]]>
+		</select>
+		
+		<insert id="boardInsert" parameterType="POIBoardVO">
+				<![CDATA[
+						INSERT INTO ctb_poi_board (
+						        bno,
+							    subject,
+							    content,
+							    address,
+							    url,
+							    division,
+							    recommend,
+							    writer,
+							    regdate
+						    
+						) VALUES (
+						 	#{bno},
+						    #{subject},
+						    #{content},
+						    #{address},
+						    #{url},
+						    #{division},
+						    #{recommend},
+						    #{writer},
+							sysdate+9/24
+						)
+						
+				]]>
+		</insert>
+		
+		<update id="boardUpdate" parameterType="POIBoardVO">
+
+				
+					UPDATE ctb_poi_board
+						SET
+						<if  test="subject != null">
+							subject = #{subject}
+						</if>    
+						<if test="subject != null and content != null" > , </if>
+						<if test="content != null">
+							content = #{content}
+						</if>
+						<if test="content != null and address != null" > , </if>
+						<if test="address != null">
+							address = #{address}
+						</if>
+						<if test="address != null and url != null" > , </if>
+						<if test="url != null">
+							url = #{url}
+						</if>
+						<if test="url != null and division != null" > , </if>
+						<if test="division != null">
+							division = #{division}
+						</if>
+						WHERE
+						    bno = #{bno}
+		
+		</update>
+		
+		<delete id="boardDelete" parameterType="int">
+				<![CDATA[
+						DELETE FROM ctb_poi_board
+							WHERE
+							    bno = #{bno}
+				]]>
+		
+		</delete>
+
+		<select id="selectMaxBno" resultType="int">
+				<![CDATA[
+						SELECT
+							nvl(max(bno),0)
+						FROM
+
+							ctb_poi_board
+
+				]]>
+		</select>
+		
+		<select id="selectMaxFno" resultType="int">
+				<![CDATA[
+						SELECT
+						    nvl(max(fno),0)
+						FROM
+						    ctb_poi_files
+				]]>
+		</select>
+		
+			<insert id="fileInsert" parameterType="POIFileVO">
+				<![CDATA[
+						INSERT INTO ctb_poi_files (
+						    fno,
+						    bno,
+						    filename,
+						    fileoriname,
+						    fileurl
+						) VALUES (
+							#{fno},
+						 	#{bno},
+						    #{filename},
+						    #{fileoriname},
+						    #{fileurl}
+						)
+						
+				]]>
+		</insert>
+		
+		<select id="fileDetail" parameterType="int" resultType="POIFileVO">
+			<![CDATA[
+					SELECT
+					    fno,
+					    bno,
+					    filename,
+					    fileoriname,
+					    fileurl
+					FROM
+					    ctb_poi_files
+					WHERE
+						bno = #{bno}    
+			
+			]]>
+		</select>
+
+		<select id="selectByText" resultType="POIBoardVO">
+			<![CDATA[
+				SELECT
+						        bno,
+							    subject,
+							    content,
+							    address,
+							    posx,
+							    posy,
+							    url,
+							    division,
+							    recommend,
+							    rate,
+							    writer,
+							    regdate
+						FROM
+								    (
+								        SELECT
+								            ROW_NUMBER()
+								            OVER(
+								                ORDER BY BNO DESC
+								            ) num,
+								            a.*
+								        FROM
+								            ctb_poi_board a
+								        WHERE 
+								        	a.subject like '%' || #{searchText} || '%' or a.address like  '%'   || #{searchText} || '%'      
+								        ORDER BY
+								            a.subject asc, a.address asc, a.rate asc
+								    ) 
+										
+						WHERE 
+							num between #{startrow} and #{startrow}+10    
+		
+			]]>
+		</select>
+		
+		
+		<select id="boardListSort"  resultType="POIBoardVO">
+
+						SELECT
+						            bno,
+								    subject,
+								    content,
+								    province,
+								    address,
+								    posx,
+								    posy,
+								    url,
+								    division,
+								    recommend,
+								    rate,
+								    writer,
+								    regdate,
+								    nvl(cno,0) as cno
+						FROM
+								    (
+								        SELECT
+								            ROW_NUMBER()
+								            OVER(
+								                ORDER BY ${sortId} ${sortOrder}
+								            ) num,
+								            a.*
+								        FROM
+								            CVW_POI_BOARD a
+								       
+								    ) 
+										
+						WHERE 
+							num between #{startrow} and #{startrow}+10    
+
+		</select>
+		
+		<select id="boardListColumnSort"  resultType="POIBoardVO">
+
+						SELECT
+						            bno,
+								    subject,
+								    content,
+								    province,
+								    address,
+								    posx,
+								    posy,
+								    url,
+								    division,
+								    recommend,
+								    rate,
+								    writer,
+								    regdate,
+								    nvl(cno,0) as cno
+						FROM
+								    (
+								        SELECT
+								            ROW_NUMBER()
+								            OVER(
+								                ORDER BY bno asc
+								            ) num,
+								            a.*
+								        FROM
+								            CVW_POI_BOARD a
+								        ORDER BY
+								            ${colSortId} ${colSortOrder}    
+								       
+								    ) 
+										
+						WHERE 
+							num between #{startrow} and #{startrow}+10    
+
+		</select>
+		
+		<select id="boardListFilter"  resultType="POIBoardVO">
+
+						SELECT
+						            bno,
+								    subject,
+								    content,
+								    province,
+								    address,
+								    posx,
+								    posy,
+								    url,
+								    division,
+								    recommend,
+								    rate,
+								    writer,
+								    regdate,
+								    nvl(cno,0) as cno
+						FROM
+								    (
+								        SELECT
+								            ROW_NUMBER()
+								            OVER(
+								                ORDER BY bno asc
+								            ) num,
+								            a.*
+								        FROM
+								            CVW_POI_BOARD a
+								        WHERE
+							
+											<if test="filterProvince != null" > 
+								        		a.province like  '%' || #{filterProvince} || '%'
+								        	</if>    
+								        	<if test="filterProvince != null and filterDivision != null  "> and </if>
+								        	<if test="filterDivision != null" > 
+								        		a.division = #{filterDivision}
+								        	</if>    
+								        	<if test=" (filterDivision != null and filterRate != null ) or ( filterProvince != null and filterDivision ==null and filterRate != null)"> and </if>
+								        	<if test="filterRate != null" > 
+								        		a.rate = #{filterRate}
+								        	</if>   
+								        ORDER BY
+								            ${sortId} ${sortOrder}    
+								       
+								    ) 
+										
+						WHERE 
+							num between #{startrow} and #{startrow}+10    
+
+		</select>
+		
+		<select id="filteredBoardCount" resultType="int">
+				<![CDATA[
+						SELECT
+							nvl(count(*),0)
+						FROM
+							ctb_poi_board
+				]]>
+		</select>
+		
+		<select id="selectProvinceList" resultType="String">
+			<![CDATA[
+					SELECT
+					    distinct province as province
+					FROM
+					    cvw_poi_board			    
+					ORDER BY
+					    province
+			
+			]]>
+		</select>
+		
+		<select id="selectRateList" resultType="String">
+			<![CDATA[
+					SELECT
+					    distinct rate as rate
+					FROM
+					    cvw_poi_board			    
+					ORDER BY
+					    rate
+			
+			]]>
+		</select>
+
+
+</mapper>

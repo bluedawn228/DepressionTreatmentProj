@@ -1,0 +1,323 @@
+
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosanskr/v13/PbykFmXiEBPT4ITbgNA5Cgm203Tq4JJWq209pU0DPdWuqxJFA4GNDCBYtw.0.woff2)
+    format("woff2");
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+}
+
+section {
+  flex: 1;
+  display: flex;
+
+}
+
+main {
+  flex: 1;
+  padding: 1rem;
+
+}
+
+
+nav, main, aside, footer {
+  /*border: 4px solid;*/
+  padding: 20px;
+  text-align: center;
+
+}
+
+
+nav {
+  border-color: hsl(30deg 100% 50%);
+  background-color: hsl(30deg 100% 50% / 0.2);
+}
+
+main {
+  border-color: hsl(180deg 100% 30%);
+  background-color: hsl(180deg 100% 30% / 0.2);
+}
+
+aside {
+  border-color: hsl(210deg 100% 50%);
+  background-color: hsl(210deg 100% 50% / 0.2);
+}
+
+footer {
+  border-color: hsl(300deg 100% 50%);
+  background-color: hsl(300deg 100% 50% / 0.2);
+}
+
+body {
+
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-top: 75px;
+
+  background: #EEE;
+  font-size:16px;
+  margin:0;	
+  border:0px solid;
+}
+
+
+body, html {
+  height: 100%;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  
+  height: 75px;
+  padding: 1rem;
+  color: white;
+  background: teal;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align:right;
+
+}
+
+header span{
+	margin-right:10px;
+}
+
+header a {
+	color: white;
+	text-decoration:none;
+
+}
+
+header a:hover {
+	color: white;
+	text-decoration:none;
+}
+
+h1, p {
+  margin: 0;
+}
+
+
+* {
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+
+}
+
+.clear {
+            clear: both;
+            height: 0;
+            overflow: hidden;
+        }
+
+
+  /*
+#hamburger {
+  width:28px;
+  height:18px;
+  box-shadow: 0 1px 15px rgba(0,0,0,.8);
+  background: green;
+  
+  position:absolute;
+}
+*/
+
+#line-wrapper {
+  cursor:pointer;
+  width:30px;
+  height:30px;
+  position:relative;
+  top:0px;
+  left:0px;
+}
+
+/* 추가된 부분 */
+.init {
+  animation:none !important;
+}
+
+.line {
+  background:#ffffff;
+  margin-top:3px;
+  margin-bottom:3px;
+  width:28px;
+  height:6px; 
+  border-radius:2px;
+  box-shadow:0 1px 3px rgba(0,0,0,.5);
+  position:relative;
+}
+
+.line-top {
+  animation:line-top .5s forwards ease-out,
+            line-top-rotate .3s .5s forwards ease-out;
+}
+
+/* 추가된 부분 */
+.top-reverse {
+  animation:line-top-rotate-reverse .3s forwards ease-out,
+            line-top-reverse .5s .3s forwards ease-out;
+}
+
+.line-mid {
+  animation:line-mid .5s forwards ease-out;
+}
+
+/* 추가된 부분 */
+.mid-reverse {
+  animation:line-mid-invisible .3s forwards ease-out, 
+            line-mid-reverse .5s .3s forwards ease-out;
+}
+
+.line-bot {
+  animation:line-bot .5s forwards ease-out,
+            line-bot-rotate .3s .5s forwards ease-out;
+}
+
+/* 추가된 부분 */
+.bot-reverse {
+  animation:line-bot-rotate-reverse .3s forwards ease-out,
+            line-bot-reverse .5s .3s forwards ease-out;
+}
+
+@keyframes line-top {
+  0% {transform:translateY(0px)}
+  100% {transform:translateY(9px)}
+}
+
+/* 추가된 부분 */
+@keyframes line-top-reverse {
+  0% {transform:translateY(9px)}
+  100% {transform:translateY(0px)}
+}
+
+@keyframes line-top-rotate {
+  0% {transform:translateY(9px) rotateZ(0deg)}
+  100% {transform:translateY(9px) rotateZ(45deg)}
+}
+
+/* 추가된 부분 */
+@keyframes line-top-rotate-reverse {
+  0% {transform:translateY(9px) rotateZ(45deg)}
+  100% {transform:translateY(9px) rotateZ(0deg)}
+}
+
+@keyframes line-mid {
+  0% {transform:scale(1)}
+  100% {transform:scale(0)}
+}
+
+/* 추가된 부분 */
+@keyframes line-mid-reverse {
+  0% {transform:scale(0)}
+  100% {transform:scale(1)}
+}
+
+@keyframes line-mid-invisible {
+  0% {transform:scale(0)}
+  100% {transform:scale(0)}
+}
+
+@keyframes line-bot {
+  0% {transform:translateY(0px)}
+  100% {transform:translateY(-9px)}
+}
+
+/* 추가된 부분 */
+@keyframes line-bot-reverse {
+  0% {transform:translateY(-9px)}
+  100% {transform:translateY(0px)}
+}
+
+@keyframes line-bot-rotate {
+  0% {transform:translateY(-9px) rotateZ(0deg)}
+  100% {transform:translateY(-9px) rotateZ(135deg)}
+}
+
+/* 추가된 부분 */
+@keyframes line-bot-rotate-reverse {
+  0% {transform:translateY(-9px) rotateZ(135deg)}
+  100% {transform:translateY(-9px) rotateZ(0deg)}
+}
+
+
+input { /* text 창에만 적용 */
+    font-size : 120%;
+    float : center;
+}
+
+input:hover, textarea:hover { /* 마우스 올라 올 때 */
+    background : aliceblue;
+}
+
+label {
+    display : block; /* 새 라인에서 시작 */
+    padding : 10px;
+    
+}
+label span {
+    float : left;
+    width : 90px;
+    text-align : right;
+    padding : 10px;
+    font-size : 120%;
+}
+
+button{ 
+	border: 1px solid darkgray; 
+	background-color: #eee; 
+	border-radius: 5px; 
+	color: black; 
+	padding: 10px 20px 10px 20px;
+	font-size : 120%;
+}
+
+button:hover{ 
+	background-color: black; 
+	color: white; 
+}
+
+
+table  {
+	border-collapse:collapse;
+	border-color:#ccc;
+	border-spacing:0;
+	}
+table td{
+	background-color:#fff;
+	border-color:#ccc;
+	border-style:solid;
+	border-width:1px;
+	color:#333;
+    overflow:hidden;
+    padding:10px 5px;
+    word-break:normal;
+    }
+    
+table th{
+	background-color:#f0f0f0;
+	border-color:#ccc;
+	border-style:solid;
+	border-width:1px;
+	color:#333;
+    font-weight:normal;
+    overflow:hidden;
+    padding:10px 5px;
+    word-break:normal;
+    text-align:center;
+    vertical-align:top
+    }
+

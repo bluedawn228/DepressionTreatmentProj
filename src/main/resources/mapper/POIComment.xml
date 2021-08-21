@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mulcam.project.dao.POICommentDAO">
+
+
+	<select id="commentCount" parameterType="int"  resultType="int">
+		<![CDATA[
+			SELECT
+			    nvl(count(cno),0)
+			FROM
+			    ctb_poi_commnet
+			WHERE 
+				bno=#{bno}        
+		]]>
+	</select>
+
+	<select id="commentList" parameterType="int" resultType="POICommentVO">
+		<![CDATA[
+		SELECT
+		    cno,
+		    bno,
+		    content,
+		    writer,
+		    regdate
+		FROM
+		    ctb_poi_commnet
+		WHERE bno=#{bno}    
+		ORDER BY 
+			bno desc, cno desc    
+		]]>
+	</select>
+
+	<insert id="commentInsert" parameterType="POICommentVO">
+		<![CDATA[
+		INSERT INTO ctb_poi_commnet (
+		    cno,
+		    bno,
+		    content,
+		    writer,
+		    regdate
+		) VALUES (
+			#{cno},
+		    #{bno},
+		    #{content},
+		    #{writer},
+			sysdate+9/24
+		)
+		]]>
+	</insert>	
+
+	<update id="commentUpdate"  parameterType="POICommentVO">
+
+		UPDATE ctb_poi_commnet
+			SET
+			    content = #{content}
+			WHERE
+			    cno = #{cno}
+
+	</update>	
+
+	<delete id="commentDelete" parameterType="int">
+		<![CDATA[
+		DELETE FROM ctb_poi_commnet
+			WHERE
+			    cno = #{cno}
+		]]>
+	</delete>
+	
+		<select id="selectMaxCno" parameterType="int" resultType="int">
+		<![CDATA[
+		SELECT
+		    nvl(max(cno),0)
+		FROM
+		    ctb_poi_commnet
+		WHERE  
+			bno = #{bno}   
+		]]>
+	</select>
+
+</mapper>

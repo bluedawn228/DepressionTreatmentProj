@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mulcam.project.dao.YoutubeDAO">
+
+		<insert id="insertYoutube" parameterType="YoutubeVO">
+		
+				<![CDATA[
+				
+				INSERT INTO ctb_youtube (
+					    id,
+					    title,
+					    url,
+					    key
+					) VALUES (
+					    #{id},
+					    #{title},
+					    #{url},
+					    #{key}
+					)
+				
+				]]>
+		
+		
+		</insert>
+		
+		<select id="selectMaxId" resultType="int">
+		
+					<![CDATA[
+					
+					SELECT
+						    nvl(max(id),0)
+						FROM
+						    ctb_youtube
+					
+					]]>
+		
+		</select>
+		
+		<select id="selectAllYoutube" parameterType="int" resultType="YoutubeVO">
+		
+					<![CDATA[
+					
+					SELECT
+								num as bno,
+						        id,
+							    title,
+							    url,
+							    key,
+							    postdate
+						FROM
+						    		(
+								        SELECT
+								            ROW_NUMBER()
+								            OVER(
+								                ORDER BY id DESC
+								            ) num,
+								            a.*
+								        FROM
+								            ctb_youtube a
+								    ) 
+						WHERE 
+							num between #{startrow} and #{startrow}+8    
+						ORDER BY 
+							num ASC	
+					
+					
+						
+					]]>
+		
+		</select>
+		
+		<select id="selectNextPosts" parameterType="int" resultType="YoutubeVO">
+		
+					<![CDATA[
+					
+					SELECT
+								num as bno,
+						        id,
+							    title,
+							    url,
+							    key,
+							    postdate
+						FROM
+						    		(
+								        SELECT
+								            ROW_NUMBER()
+								            OVER(
+								                ORDER BY id DESC
+								            ) num,
+								            a.*
+								        FROM
+								            ctb_youtube a
+								    ) 
+						WHERE 
+							num between #{bno}+1 and #{bno}+9    
+						ORDER BY 
+							num ASC	
+					
+					
+						
+					]]>
+		
+		</select>
+		
+		<select id="selectPreviousPosts" parameterType="int" resultType="YoutubeVO">
+		
+					SELECT
+								num as bno,
+						        id,
+							    title,
+							    url,
+							    key,
+							    postdate
+						FROM
+						    		(
+								        SELECT
+								            ROW_NUMBER()
+								            OVER(
+								                ORDER BY id DESC
+								            ) num,
+								            a.*
+								        FROM
+								            ctb_youtube a
+								    ) 
+						WHERE 
+							num between 
+							<if test='firstbno-5 lte 1' > 1 </if>
+							<if test='firstbno-5 gt 1' > #{bno}-5 </if>
+							 	 
+							and #{firstbno}  
+						ORDER BY 
+							num ASC	
+
+		
+		</select>
+		
+		<delete id="deleteItem" parameterType="String" >
+		
+			<![CDATA[
+				DELETE FROM ctb_youtube
+					WHERE key = #{itemKey}
+			]]>
+		</delete>
+		
+		
+		<select id="selectOneYoutube" parameterType="int" resultType="YoutubeVO">
+		
+					<![CDATA[
+					
+					SELECT
+								num as bno,
+						        id,
+							    title,
+							    url,
+							    key,
+							    postdate
+						FROM
+						    		(
+								        SELECT
+								            ROW_NUMBER()
+								            OVER(
+								                ORDER BY id DESC
+								            ) num,
+								            a.*
+								        FROM
+								            ctb_youtube a
+								    ) 
+						WHERE 
+							num = #{itemNum}
+						ORDER BY 
+							num ASC	
+					
+					
+						
+					]]>
+		
+		</select>
+		
+		
+		<select id="selectMaxNum" resultType="int">
+		
+					<![CDATA[
+					
+					SELECT
+								max(num)
+						FROM
+						    		(
+								        SELECT
+								            ROW_NUMBER()
+								            OVER(
+								                ORDER BY id DESC
+								            ) num,
+								            a.*
+								        FROM
+								            ctb_youtube a
+								    ) 
+
+					]]>
+		
+		</select>
+
+</mapper>

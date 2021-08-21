@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mulcam.project.dao.ChatDAO">
+
+		<select id="selectChatList" parameterType="Date" resultType="ChatVO">
+				<![CDATA[ 
+					
+						SELECT
+								chatId,
+								chatName,
+								replace(replace(replace(replace(chatContent,'<','&lt;'),'>','&gt;'),chr(13),'<br/>'),chr(10),'<br/>') as chatContent,
+								to_char(chatTime,'YYYY-MM-DD HH24:MI:SS') as chatTime
+						FROM
+								ctb_chat
+						Where 
+								chatTime > #{chatTime}
+						ORDER BY
+								chatTime
+
+				]]>
+
+		</select>
+		
+		<insert id="insertChat" parameterType="ChatVO"  >
+		
+				<![CDATA[ 
+					
+						INSERT
+						INTO
+								ctb_chat
+								(
+								chatId,
+								chatName,
+								chatContent,
+								chatTime
+								)
+						VALUES
+								(
+								#{chatId},
+								#{chatName},
+								#{chatContent},
+								(sysdate+9/24)
+								)
+					
+				]]>
+		
+		</insert>
+		
+		<select id="selectMaxChatId"  resultType="int">
+				<![CDATA[ 
+					
+						SELECT
+								max(chatId) as chatId
+						FROM
+								ctb_chat
+
+				]]>
+
+		</select>
+		
+		
+		<select id="selectRecentChatList" parameterType="int" resultType="ChatVO">
+				<![CDATA[ 
+					
+						SELECT
+								chatId,
+								chatName,
+								replace(replace(replace(replace(chatContent,'<','&lt;'),'>','&gt;'),chr(13),'<br/>'),chr(10),'<br/>') as chatContent,
+								to_char(chatTime,'YYYY-MM-DD HH24:MI:SS') as chatTime
+						FROM
+								ctb_chat
+						Where 
+								chatId > (select max(chatId) - #{num} from ctb_chat)
+						ORDER BY
+								chatTime
+
+				]]>
+
+		</select>
+		
+		<select id="selectRecentChatListById" parameterType="int" resultType="ChatVO">
+				<![CDATA[ 
+					
+						SELECT
+								chatId,
+								chatName,
+								replace(replace(replace(replace(chatContent,'<','&lt;'),'>','&gt;'),chr(13),'<br/>'),chr(10),'<br/>') as chatContent,
+								to_char(chatTime,'YYYY-MM-DD HH24:MI:SS') as chatTime
+						FROM
+								ctb_chat
+						Where 
+								chatId > #{chatId}
+						ORDER BY
+								chatTime
+
+				]]>
+
+		</select>
+
+</mapper>

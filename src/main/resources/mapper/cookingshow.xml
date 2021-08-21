@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mulcam.project.dao.CookingShowDAO">
+
+	<select id="selectAllArticle" resultType="CookingShowVO">
+
+            <![CDATA[
+            SELECT  cs.idx as idx, 
+		            decode(cs.authorid, 'anonymous', cs.name, mb.name) as name, 
+		            cs.authorid as authorid,
+		            cs.title as title, 
+		            cs.contents as contents,
+		            cs.filename as filename,
+		            cs.fileoriname as fileoriname,
+		            cs.recommendation as recommendation,
+		            cs.postdate as postdate,
+		            cs.modifydate as modifydate 
+            
+            FROM jtb_cookingshow_main cs,JTB_MEMBER mb
+            	where  cs.authorid = mb.id(+)
+            order by cs.postdate desc, nvl(recommendation,0) desc
+     
+            ]]>
+	</select>
+
+
+	<update id="updateRecommendation" parameterType="String">
+
+            <![CDATA[
+            UPDATE  jtb_cookingshow_main
+               SET
+            	    recommendation = recommendation + 1
+		        
+             WHERE idx = #{articleId}
+     
+            ]]>
+	</update>
+
+	<select id="selectRecommendationById" parameterType="String"
+		resultType="String">
+
+            <![CDATA[
+            SELECT  TO_CHAR(cs.recommendation)  as recommendation
+            
+             FROM jtb_cookingshow_main cs
+            WHERE cs.idx = #{articleId}
+ 
+            ]]>
+	</select>
+
+
+	<select id="selectArticleById" parameterType="String"
+		resultType="CookingShowVO">
+
+            <![CDATA[
+             SELECT  cs.idx as idx, 
+		            mb.name as authorid, 
+		            cd.value as categoryid, 
+		            cs.title as title, 
+		            cs.contents as contents,
+		            cs.imageurl as imageurl,
+		            cs.recommendation as recommendation,
+		            cs.postdate as postdate,
+		            cs.modifydate as modifydate 
+            
+            FROM jtb_cookingshow_main cs, JTB_CODE cd, JTB_MEMBER mb
+            	where cs.categoryid = cd.code
+            	  and cd.CATEGORY='diet_division'
+            	  and cs.authorid = mb.id
+           	  	  and cs.idx = #{articleId}
+ 
+            ]]>
+	</select>
+
+
+	<select id="selectArticleDetailById" parameterType="String"
+		resultType="CookingShowDetailVO">
+
+            <![CDATA[
+            SELECT  *
+            
+             FROM jtb_cookingshow_detail 
+            WHERE idx = #{articleId}
+ 
+            ]]>
+	</select>
+
+
+
+	<select id="selectArticleCommentsById" parameterType="String"
+		resultType="CookingShowCommentsVO">
+
+            <![CDATA[
+                  SELECT cc.IDX as idx,
+					cc.CIDX as cidx,
+					mb.name as commenterId,
+					cc.comments as comments,
+					cc.POSTDATE as postDate,
+					cc.MODIFYDATE as modityDate
+            
+             FROM JTB_COOKINGSHOW_COMMENT cc, JTB_MEMBER mb
+            WHERE cc.CommenterID = mb.id
+              and cc.idx = #{articleId}
+              
+              order by cc.POSTDATE desc
+ 
+            ]]>
+	</select>
+
+
+	<insert id="insertComments"
+		parameterType="CookingShowCommentsVO">
+
+            <![CDATA[
+            INSERT INTO 
+            	jtb_cookingshow_comment (
+										    idx,
+										    cidx,
+										    commenterid,
+										    comments,
+										    postdate,
+										    modifydate
+										) VALUES (
+										    #{idx},
+										    (SELECT max(cidx) + 1 as newCidx FROM jtb_cookingshow_comment),
+										    #{commenterId},
+										    #{comments},
+										    sysdate,
+										    null
+										)
+ 
+            ]]>
+	</insert>
+
+
+	<select id="selectMaxIdx" resultType="int">
+		<![CDATA[
+			select  nvl(max(idx),0)
+			from 	JTB_COOKINGSHOW_MAIN
+		
+		]]>
+	</select>
+
+
+	<insert id="insertArticleMain" parameterType="CookingShowVO">
+
+            <![CDATA[
+            INSERT INTO 
+            	JTB_COOKINGSHOW_MAIN (
+            		idx, 
+            		name,
+            		authorid, 
+            		title, 
+            		contents, 
+            		filename,
+            		fileoriname, 
+            		postdate
+            		) 
+           		VALUES (
+           			#{idx}, 
+           			#{name},
+           			#{authorid},
+           			#{title},
+           			#{contents},
+           			#{filename},
+           			#{fileoriname},
+           			sysdate
+           			)
+ 
+            ]]>
+	</insert>
+
+
+	<insert id="insertArticleDetail"
+		parameterType="CookingShowReasonsVO">
+          <![CDATA[
+   
+            INSERT INTO 
+            	JTB_COOKINGSHOW_DETAIL (
+				    idx, 
+				    ridx, 
+				    reasons
+					) 
+				VALUES 
+
+				(
+				    #{idx},
+	    		    #{ridx},
+				    #{reasons}
+				    )
+	
+	    ]]>			    
+ 		
+	</insert>
+
+
+
+
+
+
+</mapper>

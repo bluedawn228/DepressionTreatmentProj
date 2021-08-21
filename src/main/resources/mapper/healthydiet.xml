@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mulcam.project.dao.HealthyDietDAO">
+
+	<select id="selectAllArticle" resultType="HealthyDietVO">
+
+ 			<![CDATA[
+ 						SELECT
+ 								num,	
+	 							idx,
+							    categoryid,
+							    categoryname,
+							    title,
+							    description,
+							    contentno,
+							    imageurl,
+							    postdate,
+							    modifydate
+ 						FROM
+			 					(SELECT
+								            ROW_NUMBER()
+								            OVER(
+								                ORDER BY a.idx DESC
+								            ) num,
+			 						a.*
+			 					FROM
+						 					(SELECT
+											    hd.idx,
+											    hd.categoryid,
+											    cd.value as categoryname,
+											    hd.title,
+											     hd.description,
+											    hd.contentno,
+											    hd.imageurl,
+											    hd.postdate,
+											    hd.modifydate
+											FROM
+											    jtb_healthydiet_main hd,
+											    jtb_code cd
+											Where hd.categoryid = cd.code
+											  and cd.category='diet_division' ) a
+								    )
+					WHERE
+						num between 1 and 12
+ 			  ]]>
+
+	</select>
+	
+	<select id="selectNextPosts"  parameterType="int" resultType="HealthyDietVO">
+
+ 			<![CDATA[
+ 						SELECT
+ 								num,	
+	 							idx,
+							    categoryid,
+							    categoryname,
+							    title,
+							    description,
+							    contentno,
+							    imageurl,
+							    postdate,
+							    modifydate
+ 						FROM
+			 					(SELECT
+								            ROW_NUMBER()
+								            OVER(
+								                ORDER BY a.idx DESC
+								            ) num,
+			 						a.*
+			 					FROM
+						 					(SELECT
+											    hd.idx,
+											    hd.categoryid,
+											    cd.value as categoryname,
+											    hd.title,
+											     hd.description,
+											    hd.contentno,
+											    hd.imageurl,
+											    hd.postdate,
+											    hd.modifydate
+											FROM
+											    jtb_healthydiet_main hd,
+											    jtb_code cd
+											Where hd.categoryid = cd.code
+											  and cd.category='diet_division' ) a
+								    )
+					WHERE
+						num between #{num}+1 and #{num}+12    
+ 			  ]]>
+
+	</select>
+
+
+
+
+	<select id="selectArticleById" parameterType="String"
+		resultType="HealthyDietVO">
+			
+			<![CDATA[
+ 					SELECT
+					    jm.idx,
+					    jm.categoryid,
+					    jc.value as categoryname,
+					    jm.title,
+					    jm.description,
+					    jm.contentno,
+					    jm.imageurl,
+					    jm.postdate,
+					    jm.modifydate
+					FROM
+					    jtb_code jc,
+					    jtb_healthydiet_main jm
+				    where jm.categoryid = jc.code
+					  and jc.category='diet_division'
+					  and jm.idx=#{idx}
+ 			  ]]>
+
+	</select>
+
+	
+	<insert id="insertHealthyDietMain"
+		parameterType="OpenApiRecomendDietVO">
+	<![CDATA[
+	
+	INSERT INTO jtb_healthydiet_main (
+				    idx,
+				    categoryid,
+				    title,
+				    description,
+				    contentno,
+				    imageurl,
+				    postdate,
+				    modifydate
+				) VALUES (
+				    #{idx},
+				    #{dietSeCode},
+				    #{cntntsSj},
+				    null,
+				    #{cntntsNo},
+				    #{imageurl},
+				    sysdate,
+				    null
+				)
+	
+	
+	]]>
+
+	</insert>
+
+	<select id="selectHealthyDietIdxMax" resultType="int">
+			
+			<![CDATA[
+ 					SELECT
+				    max(IDX)
+				FROM
+				    JTB_HEALTHYDIET_MAIN
+ 			  ]]>
+
+	</select>
+
+
+
+
+</mapper>

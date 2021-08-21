@@ -1,0 +1,86 @@
+@charset "utf-8";
+
+/* montserrat-100 - latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 100;
+  src: url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-100.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-100.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-100.woff2') format('woff2'), /* Super Modern Browsers */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-100.woff') format('woff'), /* Modern Browsers */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-100.svg#Montserrat') format('svg'); /* Legacy iOS */
+}
+/* montserrat-regular - latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-regular.woff') format('woff'), /* Modern Browsers */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-regular.svg#Montserrat') format('svg'); /* Legacy iOS */
+}
+/* montserrat-500 - latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  src: url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-500.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-500.woff') format('woff'), /* Modern Browsers */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-500.svg#Montserrat') format('svg'); /* Legacy iOS */
+}
+/* montserrat-600 - latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  src: url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-600.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-600.woff2') format('woff2'), /* Super Modern Browsers */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-600.woff') format('woff'), /* Modern Browsers */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-600.svg#Montserrat') format('svg'); /* Legacy iOS */
+}
+/* montserrat-700 - latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-700.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-700.woff') format('woff'), /* Modern Browsers */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-700.svg#Montserrat') format('svg'); /* Legacy iOS */
+}
+/* montserrat-800 - latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 800;
+  src: url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-800.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-800.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-800.woff2') format('woff2'), /* Super Modern Browsers */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-800.woff') format('woff'), /* Modern Browsers */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-800.svg#Montserrat') format('svg'); /* Legacy iOS */
+}
+/* montserrat-900 - latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 900;
+  src: url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-900.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-900.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-900.woff2') format('woff2'), /* Super Modern Browsers */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-900.woff') format('woff'), /* Modern Browsers */
+       url('https://www.kinac.re.kr/resources/fonts/Montserrat/montserrat-900.svg#Montserrat') format('svg'); /* Legacy iOS */
+}
